@@ -1,0 +1,9 @@
+[user]
+	name = jiunian
+	email = jiunianwa@outlook.com
+[core]
+	editor = vim
+[color]
+	ui = true
+[alias]
+	graph = log --all --graph --decorate --oneline
