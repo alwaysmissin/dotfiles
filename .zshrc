@@ -115,4 +115,4 @@ source $ZSH/oh-my-zsh.sh
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 export NEMU_HOME=/home/jiunian/Program/ysyx-workbench/nemu
 export AM_HOME=/home/jiunian/Program/ysyx-workbench/abstract-machine
-
+export PATH="$PATH:~/.local/bin/"
