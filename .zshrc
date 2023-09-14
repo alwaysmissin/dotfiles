@@ -1,3 +1,5 @@
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
@@ -81,7 +83,7 @@ plugins=(
     zsh-syntax-highlighting
     z
 )
-# source $ZSH/oh-my-zsh.sh
+source $ZSH/oh-my-zsh.sh
 
 # User configuration
 
@@ -108,9 +110,34 @@ plugins=(
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-
+export DISPLAY=$(awk '/nameserver / {print $2; exit}' /etc/resolv.conf 2>/dev/null):0
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 export NEMU_HOME=/home/jiunian/Program/ysyx-workbench/nemu
 export AM_HOME=/home/jiunian/Program/ysyx-workbench/abstract-machine
+export NPC_HOME=/home/jiunian/Program/ysyx-workbench/npc
+export NVBOARD_HOME=/home/jiunian/Program/ysyx-workbench/nvboard
+
 export PATH="$PATH:~/.local/bin/"
+# 配置代理
+host_ip=$(cat /etc/resolv.conf |grep "nameserver" |cut -f 2 -d " ")
+export ALL_PROXY="http://$host_ip:7890"
+export PATH=/usr/local/lib/nodejs/node-v18.17.0-linux-x64/bin:$PATH
+
+export RISCV_HOME=/opt/riscv
+export PATH=$RISCV_HOME/bin:$PATH
+
+export PATH=~/.local/share/coursier/bin:$PATH
+
+export PATH=$PATH:~/.local/bin
+
+export JAVA_HOME=/home/jiunian/jdk17
+export PATH=$PATH:$JAVA_HOME/bin
+
+alias vim="nvim"
+alias rv32gcc="riscv64-linux-gnu-gcc -march=rv32g -mabi=ilp32"
+alias rvobjdump="riscv64-linux-gnu-objdump"
+
+eval $(thefuck --alias)
+# You can use whatever you want as an alias, like for Mondays:
+eval $(thefuck --alias FUCK)
